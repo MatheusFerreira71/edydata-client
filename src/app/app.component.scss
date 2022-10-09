@@ -1,0 +1,51 @@
+.nav-bar,
+.nav-items,
+.user-items {
+  display: flex;
+}
+
+.nav-items,
+.user-items {
+  font-size: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-evenly;
+}
+
+.nav-bar {
+  padding: 0 12.5%;
+  justify-content: space-between;
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .active-link {
+    filter: brightness(0.8);
+  }
+
+  .user-items, .logo {
+    flex: 1;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    transition: 200ms ease;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+
+}
+
+.nav-items {
+  flex: 2;
+}
+
+
+
+
