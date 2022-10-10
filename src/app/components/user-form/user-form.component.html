@@ -1,0 +1,29 @@
+<form #f="ngForm" class="card" (ngSubmit)="handleSubmit(f)">
+  <mat-form-field appearance="fill" *ngIf="cadastro || edicao">
+    <mat-label>Nome</mat-label>
+    <input matInput name="name" required=""placeholder="Ex. Marcos" [(ngModel)]="userBody.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>E-mail</mat-label>
+    <input matInput name="email" required placeholder="Ex. ana@gmail.com" [(ngModel)]="userBody.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="cadastro || login">
+    <mat-label>Senha</mat-label>
+    <input matInput required [type]="hide ? 'password' : 'text'" name="senha" [(ngModel)]="userBody.password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide" type="button">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <footer class="card-footer">
+    <button mat-raised-button color="accent" type="submit">
+      Salvar
+    </button>
+    <button mat-raised-button color="warn" type="button" (click)="voltar(f)">
+      Voltar
+    </button>
+  </footer>
+</form>

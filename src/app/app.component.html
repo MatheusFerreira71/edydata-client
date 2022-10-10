@@ -1,30 +1,45 @@
-<mat-toolbar color="primary" class="nav-bar">
-  <a routerLink="/" class="logo" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Edydata
-    Client</a>
-  <ul class="nav-items">
-    <li class="nav-item">
-      <a routerLink="clients-by-name" routerLinkActive="active-link">Por Nome</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="clients-by-date" routerLinkActive="active-link">Por Data</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="salary-and-count" routerLinkActive="active-link">Salário e Quantidade</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="client/create" routerLinkActive="active-link">Criar Cliente</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="import-clients" routerLinkActive="active-link">Importar Clientes</a>
-    </li>
-  </ul>
-  <ul class="user-items">
-    <li class="user-item">
-      <a routerLink="login" routerLinkActive="active-link">Entrar</a>
-    </li>
-    <li class="user-item">
-      <a routerLink="/create-account" routerLinkActive="active-link">Criar Conta</a>
-    </li>
-  </ul>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="box">
+  <mat-toolbar color="primary" class="nav-bar">
+    <a routerLink="/" class="logo" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Edydata
+      Client</a>
+    <ul class="nav-items">
+      <li class="nav-item">
+        <a routerLink="clients-by-name" routerLinkActive="active-link">Por Nome</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="clients-by-date" routerLinkActive="active-link">Por Data</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="salary-and-count" routerLinkActive="active-link">Salário e Quantidade</a>
+      </li>
+      <li class="nav-item" *ngIf="user">
+        <a routerLink="client/create" routerLinkActive="active-link">Criar Cliente</a>
+      </li>
+      <li class="nav-item" *ngIf="user">
+        <a routerLink="import-clients" routerLinkActive="active-link">Importar Clientes</a>
+      </li>
+    </ul>
+    <ul class="user-items" *ngIf="!user; else elseBlock">
+      <li class="user-item">
+        <a routerLink="login" routerLinkActive="active-link">Entrar</a>
+      </li>
+      <li class="user-item">
+        <a routerLink="/create-account" routerLinkActive="active-link">Criar Conta</a>
+      </li>
+    </ul>
+    <ng-template #elseBlock class="user-items">
+      <button mat-button [matMenuTriggerFor]="menu">{{user.name}}</button>
+      <mat-menu #menu="matMenu">
+        <a routerLink="profile" mat-menu-item>Perfil</a>
+        <button mat-menu-item type="button" (click)="logOut()">Desconectar</button>
+      </mat-menu>
+    </ng-template>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+  <footer class="main-footer mat-primary">
+    <p>Desenvolvido por Matheus Ferreira</p>
+  </footer>
+
+</div>

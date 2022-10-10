@@ -1,1 +1,28 @@
-<p>import-clients works!</p>
+<div class="container">
+  <app-title title="Importar Clientes"></app-title>
+
+  <form class="imgUploader" #f="ngForm" (ngSubmit)="handleSubmit(f)">
+    <label for="imgpost">Upload de imagem principal</label>
+    <input
+      id="imgpost"
+      type="file"
+      name="files"
+      required
+      (change)="handleFileInput($event)"
+      accept="text/xml"
+    />
+    <button
+      onclick="document.querySelector('#imgpost').click()"
+      class="imgButton"
+    >
+      Escolha a imagem
+    </button>
+    <span class="fileName">{{
+      imgName ? imgName : "Nenhum arquivo selecionado"
+    }}</span>
+
+    <button mat-raised-button color="accent" type="submit" class="form-send">
+      Enviar
+    </button>
+  </form>
+</div>

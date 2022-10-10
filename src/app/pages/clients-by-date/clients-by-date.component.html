@@ -1,1 +1,17 @@
-<p>clients-by-date works!</p>
+<div class="container">
+  <app-title title="Clientes por Data de Nascimento"></app-title>
+  <form #f="ngForm" (ngSubmit)="getByDate(f)" class="search-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Intervalo de Datas</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate name="startDate" placeholder="Data Inicial" required [(ngModel)]="startDate">
+        <input matEndDate name="endDate" placeholder="Data Final" required [(ngModel)]="endDate">
+      </mat-date-range-input>
+      <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <button mat-button color="accent" class="send-button" type="submit">Pesquisar</button>
+  </form>
+  <app-table [data$]=clients$></app-table>
+</div>

@@ -1,0 +1,115 @@
+<div class="container">
+  <app-title title="Informações do Cliente"></app-title>
+  <article class="card" *ngIf="client">
+    <div class="card-content">
+      <div class="card-group">
+        <div class="item-group">
+          <label>Nome</label>
+          <p class="card-item">{{client.nome}}</p>
+        </div>
+        <div class="item-group">
+          <label>CPF</label>
+          <p class="card-item">{{client.CPF}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>Estado Civil</label>
+          <p class="card-item">{{client.estadoCivil | civilState}}</p>
+        </div>
+        <div class="item-group">
+          <label>Conjuge</label>
+          <p class="card-item">{{client.conjuge}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>Pai</label>
+          <p class="card-item">{{client.pai}}</p>
+        </div>
+        <div class="item-group">
+          <label>Mae</label>
+          <p class="card-item">{{client.mae}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>RG</label>
+          <p class="card-item">{{client.rg}}</p>
+        </div>
+        <div class="item-group">
+          <label>Salário</label>
+          <p class="card-item">{{client.salario | currency:'BRL'}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>Especie</label>
+          <p class="card-item">{{client.especie}}</p>
+        </div>
+        <div class="item-group">
+          <label>Titulo de Eleitor</label>
+          <p class="card-item">{{client.tituloEleitor}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>Sexo</label>
+          <p class="card-item">{{client.sexo | gender}}</p>
+        </div>
+        <div class="item-group">
+          <label>Celular</label>
+          <p class="card-item">{{client.celular}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>CEP</label>
+          <p class="card-item">{{client.cep}}/p>
+        </div>
+        <div class="item-group">
+          <label>Endereço</label>
+          <p class="card-item">{{client.endereco}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>Complemento</label>
+          <p class="card-item">{{client.complemento}}</p>
+        </div>
+        <div class="item-group">
+          <label>Número</label>
+          <p class="card-item">{{client.numero}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>E-mail</label>
+          <p class="card-item">{{client.email}}</p>
+        </div>
+        <div class="item-group">
+          <label>Cidade</label>
+          <p class="card-item">{{client.cidade}}</p>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="item-group">
+          <label>Bairro</label>
+          <p class="card-item">{{client.bairro}}</p>
+        </div>
+        <div class="item-group">
+          <label>Data de Nascimento</label>
+          <p class="card-item">{{client.dataNascimento | date:'mediumDate'}}</p>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer" *ngIf="user">
+      <button matTooltip="Editar" mat-raised-button color="accent" type="button" (click)="updateClient()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button matTooltip="Excluir" mat-raised-button color="warn" type="button" (click)="deleteClient()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </footer>
+  </article>
+</div>

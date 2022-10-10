@@ -26,7 +26,8 @@
     filter: brightness(0.8);
   }
 
-  .user-items, .logo {
+  .user-items,
+  .logo {
     flex: 1;
   }
 
@@ -46,6 +47,22 @@
   flex: 2;
 }
 
+.box {
+  min-height: 100vh;
+}
 
+.main-footer {
+  position: sticky;
+  top: 100%;
+  text-align: center;
+  padding: 1rem 12.5%;
+  margin-top: 2rem;
+  background: #7b1fa2;
+  color: #fff;
+  font-weight: 500;
+}
 
+p {
+  margin: 0;
+}
 

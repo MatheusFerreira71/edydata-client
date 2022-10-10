@@ -1,1 +1,154 @@
-<p>client-form works!</p>
+<div class="container">
+  <app-title title="Cadastrar um Cliente"></app-title>
+
+  <form #f="ngForm" (ngSubmit)="handleSubmit(f)">
+    <div class="biggest-container">
+      <div class="bigger-form-container">
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput name="nome" placeholder="Ex. Matheus" required [(ngModel)]="clientBody.nome">
+          </mat-form-field>
+
+          <mat-form-field hintLabel="Máximo de 11 caracteres" appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput name="cpf" #cpf maxlength="11" placeholder="12345678909" required [(ngModel)]="clientBody.CPF">
+            <mat-hint align="end">{{cpf.value.length || 0}}/11</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Pai</mat-label>
+            <input matInput name="pai" placeholder="Ex. Marcos" [(ngModel)]="clientBody.pai">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Mae</mat-label>
+            <input matInput name="mae" placeholder="Ex. Ana" [(ngModel)]="clientBody.mae">
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Conjuge</mat-label>
+            <input matInput name="conjuge" placeholder="Ex. Sofia" [(ngModel)]="clientBody.conjuge">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>RG</mat-label>
+            <input matInput name="rg" placeholder="Ex. 000000000" [(ngModel)]="clientBody.rg">
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Espécie</mat-label>
+            <input matInput #input name="especie" placeholder="F" required [(ngModel)]="clientBody.especie">
+          </mat-form-field>
+
+          <mat-form-field hintLabel="Máximo de 12 caracteres" appearance="fill">
+            <mat-label>Título de Eleitor</mat-label>
+            <input matInput #eleitor name="tituloEleitor" maxlength="12" placeholder="Ex. 123456789101" [(ngModel)]="clientBody.tituloEleitor">
+            <mat-hint align="end">{{eleitor.value.length || 0}}/12</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Celular</mat-label>
+            <input matInput name="celular" placeholder="Ex. 16999999999" [(ngModel)]="clientBody.celular">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input matInput name="cep" placeholder="Ex. 14444444" [(ngModel)]="clientBody.cep">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="bigger-form-container">
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Endereço</mat-label>
+            <input matInput name="endereco" placeholder="Ex. Rua X" [(ngModel)]="clientBody.endereco">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Complemento</mat-label>
+            <input matInput name="complemento" placeholder="Ex. Casa" [(ngModel)]="clientBody.complemento">
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Número</mat-label>
+            <input matInput name="numero" placeholder="Ex. 100" [(ngModel)]="clientBody.numero">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Bairro</mat-label>
+            <input matInput name="bairro" placeholder="Ex. Jardim Santana" [(ngModel)]="clientBody.bairro">
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput name="email" placeholder="Ex. john@doe.com" [(ngModel)]="clientBody.email">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Cidade</mat-label>
+            <input matInput name="cidade" placeholder="Ex. Franca" [(ngModel)]="clientBody.cidade">
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Estado Civil</mat-label>
+            <mat-select required [(value)]="clientBody.estadoCivil">
+              <mat-option value="1">Solteiro</mat-option>
+              <mat-option value="2">Casado</mat-option>
+              <mat-option value="3">Separado</mat-option>
+              <mat-option value="4">Divorciado</mat-option>
+              <mat-option value="5">Viúvo</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select required [(value)]="clientBody.sexo">
+              <mat-option value="M">Masculino</mat-option>
+              <mat-option value="F">Feminino</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" name="dataNascimento" [(ngModel)]="clientBody.dataNascimento">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Salário</mat-label>
+            <input matInput type="number" name="salario" class="example-right-align" placeholder="0" required [(ngModel)]="clientBody.salario">
+            <span matPrefix>$&nbsp;</span>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="form-buttons">
+      <button mat-raised-button color="accent" type="submit">
+        Salvar
+      </button>
+      <button mat-raised-button color="warn" type="button" (click)="voltar(f)">
+        Voltar
+      </button>
+    </div>
+  </form>
+</div>

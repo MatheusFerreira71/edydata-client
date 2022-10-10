@@ -1,0 +1,24 @@
+<div class="container">
+  <app-title title="Perfil de Usuário"></app-title>
+  <article class="card" *ngIf="user">
+    <div class="card-content">
+      <div class="card-group">
+        <div class="item-group">
+          <label>Nome</label>
+          <p class="card-item">{{user.name}}</p>
+        </div>
+        <div class="item-group">
+          <label>E-mail</label>
+          <p class="card-item">{{user.email}}</p>
+        </div>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a routerLink="/update-account" mat-button color="accent">Editar Dados</a>
+      <a routerLink="/change-password" mat-button color="accent">Editar Senha</a>
+      <button mat-button color="warn" type="button" (click)="deleteUser()">
+        Excluir Conta
+      </button>
+    </footer>
+  </article>
+</div>

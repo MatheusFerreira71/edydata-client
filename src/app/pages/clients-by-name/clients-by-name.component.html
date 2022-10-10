@@ -1,1 +1,14 @@
-<p>clients-by-name works!</p>
+<div class="container">
+  <app-title title="Clientes por Nome"></app-title>
+  <form #f="ngForm" (ngSubmit)="getByName(f)" class="search-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome a procurar</mat-label>
+      <input matInput name="name" type="text" [(ngModel)]="name" required>
+      <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-button color="accent" class="send-button" type="submit">Pesquisar</button>
+  </form>
+  <app-table [data$]=clients$></app-table>
+</div>
